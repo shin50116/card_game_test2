@@ -1,5 +1,6 @@
 const gameContainer = document.getElementById("game-container");
 const levelDisplay = document.getElementById("level");
+const startButton = document.getElementById("start-button");
 
 let currentLevel = 1;
 let oddColor = ""; // 정답 색상
@@ -11,6 +12,13 @@ const timerDisplay = document.createElement("p");
 timerDisplay.id = "timer";
 timerDisplay.textContent = "0.00초";
 document.body.insertBefore(timerDisplay, gameContainer);
+
+// 게임 시작 버튼 클릭 시 호출되는 함수
+function startGame() {
+    startButton.style.display = "none"; // 시작 버튼 숨기기
+    gameContainer.style.display = "grid"; // 게임 화면 표시
+    initGame(); // 게임 초기화
+}
 
 // 카드 색상 생성 함수
 function generateColors(level) {
@@ -115,5 +123,5 @@ function showPopup(message) {
     document.body.appendChild(popup);
 }
 
-// 게임 시작
-initGame();
+// "게임 시작" 버튼에 이벤트 리스너 추가
+startButton.addEventListener("click", startGame);
